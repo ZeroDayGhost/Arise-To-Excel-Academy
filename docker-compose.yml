@@ -1,0 +1,79 @@
+services:
+  db:
+    image: mariadb:11.4
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+      # Applied only when the data volume is empty.
+      - ./arise_to_excel.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ['CMD', 'healthcheck.sh', '--connect', '--innodb_initialized']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+    networks:
+      - default
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+
+  app:
+    image: ghcr.io/${GHCR_OWNER}/${IMAGE}:${TAG}
+    restart: always
+    expose:
+      - '80'
+    environment:
+      ARISE_APP_ENV: ${ARISE_APP_ENV:-production}
+      ARISE_DB_HOST: db
+      ARISE_DB_PORT: 3306
+      ARISE_DB_NAME: ${MYSQL_DATABASE}
+      ARISE_DB_USER: ${MYSQL_USER}
+      ARISE_DB_PASS: ${MYSQL_PASSWORD}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - default
+      - web_gateway
+    healthcheck:
+      test:
+        [
+          'CMD-SHELL',
+          'php -r "exit(@file_get_contents(\"http://127.0.0.1/\") === false ? 1 : 0);"',
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=web_gateway
+      - traefik.http.services.${IMAGE}-${ENV_SUFFIX}.loadbalancer.server.port=80
+      - traefik.http.routers.${IMAGE}-${ENV_SUFFIX}.rule=Host(`${DOMAIN}`)
+      - traefik.http.routers.${IMAGE}-${ENV_SUFFIX}.entrypoints=websecure
+      - traefik.http.routers.${IMAGE}-${ENV_SUFFIX}.tls=true
+      - traefik.http.routers.${IMAGE}-${ENV_SUFFIX}.tls.options=cf-strict@file
+      - traefik.http.routers.${IMAGE}-${ENV_SUFFIX}.service=${IMAGE}-${ENV_SUFFIX}
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+
+volumes:
+  db_data:
+    name: ${PROJECT_NAME}_${PROJECT_SUFFIX}_db
+
+networks:
+  default:
+    driver: bridge
+  web_gateway:
+    external: true
