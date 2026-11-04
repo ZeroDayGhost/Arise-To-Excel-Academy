@@ -1,0 +1,164 @@
+.receipt-print-actions {
+    display: flex;
+    align-items: end;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 0 auto 18px;
+    max-width: 1080px;
+}
+
+.btn-print-a4 {
+    background: #173b5d;
+    color: #fff;
+}
+
+.btn-print-a4:hover {
+    background: #102d48;
+}
+
+.thermal-receipt {
+    display: none;
+}
+
+@page receiptA4 {
+    size: A4 portrait;
+    margin: 8mm;
+}
+
+@media print {
+    html,
+    body {
+        width: auto !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        color: #111 !important;
+        overflow: visible !important;
+    }
+
+    body[data-receipt-print-mode="a4"] * {
+        visibility: hidden !important;
+    }
+
+    body[data-receipt-print-mode="a4"] .receipt-a4-layout,
+    body[data-receipt-print-mode="a4"] .receipt-a4-layout * {
+        visibility: visible !important;
+    }
+
+    body[data-receipt-print-mode="a4"] .receipt-a4-layout {
+        position: relative !important;
+        inset: auto !important;
+        display: block !important;
+        width: 190mm !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        max-width: 190mm !important;
+        margin: 0 auto !important;
+        padding: 4mm !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background: #fff !important;
+        color: #111 !important;
+        font-size: 10pt !important;
+        overflow: visible !important;
+        page: receiptA4;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    body[data-receipt-print-mode="a4"] .receipt-print-actions,
+    body[data-receipt-print-mode="a4"] .action-row,
+    body[data-receipt-print-mode="a4"] .thermal-receipt,
+    body[data-receipt-print-mode="a4"] .parent-print-actions {
+        display: none !important;
+    }
+
+    body[data-receipt-print-mode="a4"] .receipt-container .receipt-title {
+        display: block !important;
+    }
+
+    body[data-receipt-print-mode="a4"] .receipt-container .receipt-footer,
+    body[data-receipt-print-mode="a4"] .receipt-container .receipt-footer-text {
+        display: grid !important;
+    }
+
+    body[data-receipt-print-mode="a4"] .receipt-container .receipt-footer-text {
+        display: block !important;
+    }
+
+    body[data-receipt-print-mode="a4"] .receipt-container .receipt-header {
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 12px !important;
+        padding: 5mm 0 3mm !important;
+        border-bottom: 1px solid #148db5 !important;
+    }
+
+    body[data-receipt-print-mode="a4"] .receipt-container .receipt-header-logo img {
+        width: 18mm !important;
+    }
+
+    body[data-receipt-print-mode="a4"] .receipt-container .receipt-header-details h2 {
+        color: #123451 !important;
+        font-size: 15pt !important;
+    }
+
+    body[data-receipt-print-mode="a4"] .receipt-container .receipt-section-title {
+        margin-top: 5mm !important;
+    }
+
+    body[data-receipt-print-mode="a4"] .receipt-container .receipt-items-table,
+    body[data-receipt-print-mode="a4"] .receipt-container .receipt-details-table {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    body[data-receipt-print-mode="a4"] .parent-receipt {
+        width: 190mm !important;
+        max-width: 190mm !important;
+        margin: 0 auto !important;
+        padding: 5mm !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background: #fff !important;
+        color: #111 !important;
+        page: receiptA4;
+        break-inside: auto !important;
+    }
+
+    body[data-receipt-print-mode="a4"] .parent-receipt-heading {
+        break-inside: avoid !important;
+    }
+
+    body[data-receipt-print-mode="a4"] .parent-receipt-heading img {
+        width: 18mm !important;
+        height: 18mm !important;
+        object-fit: contain !important;
+    }
+
+    body[data-receipt-print-mode="a4"] .thermal-receipt {
+        display: none !important;
+    }
+
+    a {
+        color: inherit !important;
+        text-decoration: none !important;
+    }
+}
+
+@media (max-width: 700px) {
+    .receipt-print-actions {
+        align-items: stretch;
+    }
+
+    .receipt-print-actions > * {
+        flex: 1 1 100%;
+    }
+
+}

@@ -1,0 +1,22 @@
+.session-timeout[hidden] { display: none !important; }
+.session-timeout { position: fixed; z-index: 30000; inset: 0; display: grid; place-items: center; padding: 20px; }
+.session-timeout__backdrop { position: absolute; inset: 0; background: rgba(12, 25, 36, .58); backdrop-filter: blur(3px); }
+.session-timeout__dialog { position: relative; width: min(100%, 440px); padding: 28px; border: 1px solid var(--line, #dce3e8); border-radius: 12px; color: var(--ink, #1d2b36); background: var(--surface, #fff); box-shadow: 0 24px 70px rgba(0, 0, 0, .24); }
+.session-timeout__icon { display: grid; width: 44px; height: 44px; margin-bottom: 16px; place-items: center; border-radius: 10px; color: #0878b4; background: #e6f4fb; font-size: 1.1rem; }
+.session-timeout__dialog h2 { margin: 0 0 8px; color: inherit; font-size: 1.25rem; font-weight: 750; }
+.session-timeout__dialog p { margin: 0; color: var(--muted, #61717e); line-height: 1.55; }
+.session-timeout__countdown { margin-top: 16px !important; font-size: .9rem; }
+.session-timeout__countdown strong { color: #b54708; font-variant-numeric: tabular-nums; }
+.session-timeout__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.session-timeout__actions .btn { min-height: 42px; }
+.session-timeout__error { margin-top: 14px !important; color: #b42318 !important; font-size: .86rem; }
+html[data-theme="dark"] .session-timeout__dialog { border-color: #34434e; color: #edf4f8; background: #17232b; }
+html[data-theme="dark"] .session-timeout__dialog p { color: #b5c3cc; }
+html[data-theme="dark"] .session-timeout__icon { color: #9bdcf1; background: #203948; }
+@media (max-width: 575.98px) {
+    .session-timeout { padding: 14px; }
+    .session-timeout__dialog { padding: 22px; }
+    .session-timeout__actions { display: grid; grid-template-columns: 1fr; }
+    .session-timeout__actions .btn { width: 100%; }
+}
+@media print { .session-timeout { display: none !important; } }

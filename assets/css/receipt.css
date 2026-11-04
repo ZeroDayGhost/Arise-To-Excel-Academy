@@ -1,0 +1,676 @@
+/* Receipt Styling */
+
+/* Page Layout */
+.receipt-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+    background: white;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #0F172A;
+    font-size: 12px;
+}
+
+@media print {
+    body[data-receipt-print-mode="a4"] {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        padding: 0;
+    }
+    body[data-receipt-print-mode="a4"] * {
+        visibility: hidden !important;
+    }
+    body[data-receipt-print-mode="a4"] .receipt-container,
+    body[data-receipt-print-mode="a4"] .receipt-container * {
+        visibility: visible !important;
+    }
+    body[data-receipt-print-mode="a4"] .receipt-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 210mm;
+        min-height: 297mm;
+        max-width: 210mm;
+        margin: 0;
+        padding: 8mm;
+        background: white;
+        box-shadow: none;
+        border: none;
+        page-break-after: avoid;
+        page-break-inside: avoid;
+        break-inside: avoid-column;
+        font-size: 10px;
+    }
+    .action-row,
+    .btn-receipt,
+    .receipt-footer-text,
+    .receipt-footer,
+    .receipt-title {
+        display: none !important;
+    }
+    .receipt-header {
+        flex-direction: row;
+        gap: 8px;
+        padding: 4px 0;
+        margin-bottom: 6px;
+        border-bottom: none;
+    }
+    .receipt-header-logo img {
+        width: 45px;
+    }
+    .receipt-header-details h2 {
+        font-size: 12px;
+    }
+    .receipt-header-details .school-address,
+    .receipt-header-details .school-contact {
+        font-size: 8px;
+    }
+    .receipt-info-card {
+        gap: 6px;
+        padding: 6px;
+        margin-bottom: 8px;
+    }
+    .receipt-info-item {
+        font-size: 9px;
+    }
+    .receipt-info-label {
+        font-size: 7px;
+    }
+    .receipt-info-value {
+        font-size: 9px;
+    }
+    .receipt-section-title {
+        font-size: 10px;
+        margin-top: 8px;
+        margin-bottom: 6px;
+    }
+    .receipt-details-table td,
+    .receipt-items-table th,
+    .receipt-items-table td,
+    .payment-info,
+    .totals-row {
+        font-size: 8px;
+    }
+    .receipt-details-table td {
+        padding: 3px 5px;
+    }
+    .receipt-items-table th,
+    .receipt-items-table td {
+        padding: 3px 5px;
+    }
+    .receipt-items-table thead {
+        background: #1179a8 !important;
+        color: white;
+    }
+    .receipt-items-table tbody tr:hover {
+        background: none;
+    }
+    .receipt-totals {
+        display: block;
+        margin-top: 6px;
+        padding-top: 4px;
+    }
+    .totals-column {
+        width: 100%;
+    }
+    .payment-info {
+        padding: 4px 6px;
+        margin: 6px 0;
+    }
+    .receipt-footer {
+        display: none !important;
+    }
+    * {
+        box-shadow: none !important;
+    }
+}
+
+@page {
+    size: A4 portrait;
+    margin: 5mm;
+}
+
+/* Header Section */
+.receipt-header {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 2px solid #1179a8;
+    margin-bottom: 12px;
+}
+
+.receipt-header-logo {
+    flex: 0 0 60px;
+}
+
+.receipt-header-logo img {
+    width: 60px;
+    height: auto;
+    display: block;
+}
+
+.receipt-header-details {
+    flex: 1;
+    text-align: center;
+}
+
+.receipt-header-details h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #1179a8;
+    margin: 0 0 4px 0;
+}
+
+.receipt-header-details .school-address,
+.receipt-header-details .school-contact {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    color: #64748B;
+    margin: 2px 0;
+    line-height: 1.3;
+}
+
+/* Receipt Title */
+.receipt-title {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #0F172A;
+    margin: 8px 0;
+    padding: 5px 0;
+    letter-spacing: 0.5px;
+}
+
+/* Receipt Info Card */
+.receipt-info-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    background: #F8FAFC;
+    border-radius: 6px;
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #E2E8F0;
+}
+
+.receipt-info-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.receipt-info-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 9px;
+    color: #334155;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-bottom: 2px;
+}
+
+.receipt-info-value {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    color: #0F172A;
+}
+
+/* Section Title */
+.receipt-section-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    color: #1179a8;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    letter-spacing: 0.4px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+/* Student Details Table */
+.receipt-details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+    font-size: 11px;
+}
+
+.receipt-details-table tr {
+    height: 28px;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.receipt-details-table td {
+    padding: 6px 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    line-height: 1.3;
+}
+
+.receipt-details-table td:first-child {
+    width: 35%;
+    font-weight: 600;
+    color: #475569;
+    background: #F8FAFC;
+}
+
+.receipt-details-table td:last-child {
+    width: 65%;
+    color: #0F172A;
+}
+
+.receipt-details-table tr:hover td:last-child {
+    background: #F1F5F9;
+}
+
+/* Payment Items Table */
+.receipt-items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 12px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+}
+
+.receipt-items-table thead {
+    background: #1179a8;
+    color: white;
+}
+
+.receipt-items-table th {
+    padding: 6px 8px;
+    font-weight: 700;
+    text-align: left;
+    border: none;
+    font-size: 10px;
+}
+
+.receipt-items-table tbody tr {
+    border-bottom: 1px solid #E2E8F0;
+    height: 24px;
+}
+
+.receipt-items-table tbody tr:hover {
+    background: #F8FAFC;
+}
+
+.receipt-items-table td {
+    padding: 6px 8px;
+    color: #0F172A;
+    font-size: 10px;
+}
+
+.receipt-items-table td:nth-child(3),
+.receipt-items-table td:nth-child(4),
+.receipt-items-table td:nth-child(5) {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Teacher Child Discount */
+.teacher-child-card {
+    background: #EFF6FF;
+    border: 1px solid #93C5FD;
+    border-radius: 6px;
+    padding: 8px;
+    margin: 10px 0;
+    font-size: 10px;
+}
+
+.teacher-child-badge {
+    display: inline-block;
+    background: #1179a8;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 9px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.teacher-child-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.teacher-child-item {
+    font-size: 10px;
+}
+
+.teacher-child-item label {
+    display: block;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 2px;
+    font-size: 9px;
+}
+
+.teacher-child-item .amount {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1179a8;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Balance Summary */
+.balance-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.balance-item {
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.balance-item.previous-balance {
+    background: #FEF3C7;
+    border: 1px solid #F59E0B;
+}
+
+.balance-item.amount-paid {
+    background: #DCFCE7;
+    border: 1px solid #22C55E;
+}
+
+.balance-item.current-balance {
+    background: #FEE2E2;
+    border: 1px solid #EF4444;
+}
+
+.balance-item.current-balance.cleared {
+    background: #DCFCE7;
+    border: 1px solid #22C55E;
+}
+
+.balance-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 8px;
+    color: #475569;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    letter-spacing: 0.3px;
+}
+
+.balance-amount {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #0F172A;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.5px;
+}
+
+/* Payment Status Badge */
+.payment-status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin: 4px 0;
+}
+
+.payment-status-badge.paid {
+    background: #DCFCE7;
+    color: #15803D;
+}
+
+.payment-status-badge.partial {
+    background: #FEF3C7;
+    color: #B45309;
+}
+
+.payment-status-badge.unpaid {
+    background: #FEE2E2;
+    color: #B91C1C;
+}
+
+/* Totals Section */
+.receipt-totals {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid #1179a8;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.totals-column {
+    width: 250px;
+}
+
+.totals-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+}
+
+.totals-row.total {
+    font-weight: 700;
+    font-size: 11px;
+    border-top: 1px solid #E2E8F0;
+    padding: 6px 0;
+    margin-top: 4px;
+    color: #1179a8;
+}
+
+.totals-row.balance {
+    font-weight: 700;
+    font-size: 12px;
+    color: #EF4444;
+}
+
+.totals-row.balance.cleared {
+    color: #22C55E;
+}
+
+.totals-label {
+    color: #475569;
+}
+
+.totals-value {
+    color: #0F172A;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+}
+
+/* Footer */
+.receipt-footer {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid #CBD5E1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 9px;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-label {
+    font-size: 8px;
+    font-weight: 600;
+    color: #475569;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+}
+
+.footer-line {
+    border-bottom: 1px solid #0F172A;
+    width: 80%;
+    height: 15px;
+}
+
+.footer-value {
+    font-size: 9px;
+    color: #0F172A;
+    margin-top: 2px;
+    font-weight: 500;
+}
+
+.receipt-footer-text {
+    grid-column: 1 / -1;
+    font-size: 9px;
+    color: #64748B;
+    margin-top: 8px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+/* Payment Method Info */
+.payment-info {
+    background: #F8FAFC;
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin: 8px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    border-left: 2px solid #1179a8;
+}
+
+.payment-info-item {
+    color: #475569;
+    margin: 2px 0;
+    font-size: 10px;
+}
+
+.payment-info-label {
+    font-weight: 600;
+    color: #0F172A;
+}
+
+/* Action Buttons */
+.action-row {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-receipt {
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-back {
+    background: #E2E8F0;
+    color: #0F172A;
+}
+
+.btn-back:hover {
+    background: #CBD5E1;
+}
+
+.btn-pdf {
+    background: #1179a8;
+    color: white;
+}
+
+.btn-pdf:hover {
+    background: #0c5c85;
+    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+}
+
+.btn-print {
+    background: #22C55E;
+    color: white;
+}
+
+.btn-print:hover {
+    background: #16a34a;
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .receipt-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .receipt-info-card {
+        grid-template-columns: 1fr;
+    }
+
+    .balance-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .receipt-footer {
+        grid-template-columns: 1fr;
+    }
+
+    .receipt-items-table {
+        font-size: 9px;
+    }
+
+    .receipt-items-table th,
+    .receipt-items-table td {
+        padding: 6px;
+    }
+
+    .action-row {
+        flex-direction: column;
+    }
+
+    .btn-receipt {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .action-row {
+        display: none;
+    }
+
+    .btn-receipt {
+        display: none;
+    }
+
+    .receipt-container {
+        box-shadow: none;
+        border: none;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+}

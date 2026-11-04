@@ -1,0 +1,513 @@
+.activities-dashboard {
+    --activity-blue: #168aca;
+    --activity-blue-dark: #123b68;
+    --activity-green: #16845b;
+    --activity-amber: #a86a12;
+    --activity-line: #dce7f0;
+    --activity-muted: #718197;
+    color: #243b59;
+}
+
+.activities-dashboard .page-title {
+    margin-bottom: 18px;
+}
+
+.activities-dashboard .page-title .eyebrow {
+    margin: 0 0 3px;
+    color: var(--activity-blue);
+    font-size: 11px;
+    font-weight: 750;
+    text-transform: uppercase;
+}
+
+.activities-dashboard .page-title h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 760;
+}
+
+.activities-dashboard .activity-metric {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 106px;
+    padding: 17px;
+    border: 1px solid var(--activity-line);
+    border-radius: 9px;
+    background: #fff;
+    box-shadow: 0 3px 12px rgba(25, 57, 86, .045);
+}
+
+.activities-dashboard .activity-metric-icon {
+    display: grid;
+    flex: 0 0 46px;
+    width: 46px;
+    height: 46px;
+    place-items: center;
+    border-radius: 50%;
+    background: #e7f3fb;
+    color: var(--activity-blue);
+    font-size: 19px;
+}
+
+.activities-dashboard .activity-metric > div {
+    display: grid;
+    min-width: 0;
+    gap: 3px;
+}
+
+.activities-dashboard .activity-metric small {
+    color: var(--activity-muted);
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.activities-dashboard .activity-metric strong {
+    color: var(--activity-blue-dark);
+    font-size: 22px;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+.activities-dashboard .activity-metric > div > span {
+    color: var(--activity-muted);
+    font-size: 11px;
+}
+
+.activities-dashboard .activity-metric-collected .activity-metric-icon {
+    color: var(--activity-green);
+    background: #e7f5ee;
+}
+
+.activities-dashboard .activity-metric-outstanding .activity-metric-icon {
+    color: var(--activity-amber);
+    background: #fff2df;
+}
+
+.activities-dashboard .activity-panel {
+    overflow: hidden;
+    border: 1px solid var(--activity-line);
+    border-radius: 9px;
+    background: #fff;
+    box-shadow: 0 3px 12px rgba(25, 57, 86, .045);
+}
+
+.activities-dashboard .activity-panel .panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--activity-line);
+}
+
+.activities-dashboard .activity-panel .panel-heading h2 {
+    margin: 0;
+    color: var(--activity-blue-dark);
+    font-size: 15px;
+    font-weight: 740;
+}
+
+.activities-dashboard .activity-panel .panel-subtitle {
+    margin: 4px 0 0;
+    color: var(--activity-muted);
+    font-size: 11px;
+}
+
+.activities-dashboard .activity-panel .panel-heading .btn {
+    flex: none;
+    white-space: nowrap;
+}
+
+.activities-dashboard .activity-table,
+.activities-dashboard .activity-payment-table {
+    min-width: 960px;
+    margin: 0;
+    font-size: 11px;
+}
+
+.activities-dashboard .activity-payment-table {
+    min-width: 640px;
+}
+
+.activities-dashboard .activity-table th,
+.activities-dashboard .activity-payment-table th {
+    color: #5d7189;
+    font-size: 10px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.activities-dashboard .activity-table td,
+.activities-dashboard .activity-table th,
+.activities-dashboard .activity-payment-table td,
+.activities-dashboard .activity-payment-table th {
+    padding: 10px 9px;
+    vertical-align: middle;
+}
+
+.activities-dashboard .activity-table td strong {
+    color: var(--activity-blue-dark);
+    font-size: 12px;
+}
+
+.activities-dashboard .activity-table .badge,
+.activities-dashboard .activity-payment-table .badge {
+    white-space: nowrap;
+}
+
+.activities-dashboard .activity-actions,
+.activities-dashboard .activity-payment-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.activities-dashboard .activity-actions form,
+.activities-dashboard .activity-payment-actions form {
+    margin: 0;
+}
+
+.activities-dashboard .activity-payment-actions {
+    margin-top: 5px;
+}
+
+.activities-dashboard .activity-payment-actions .btn {
+    padding: 1px 3px;
+    font-size: 10px;
+}
+
+.activities-dashboard .activity-summary-body {
+    display: grid;
+    grid-template-columns: minmax(130px, .9fr) minmax(140px, 1.1fr);
+    align-items: center;
+    gap: 20px;
+    min-height: 230px;
+    padding: 22px;
+}
+
+.activities-dashboard .activity-donut {
+    display: grid;
+    width: min(100%, 178px);
+    aspect-ratio: 1;
+    place-items: center;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: conic-gradient(var(--activity-blue) var(--collected), #e5a848 0);
+}
+
+.activities-dashboard .activity-donut-empty {
+    background: #e1e8ee;
+}
+
+.activities-dashboard .activity-donut > div {
+    display: flex;
+    width: 72%;
+    aspect-ratio: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.activities-dashboard .activity-donut strong {
+    color: var(--activity-blue-dark);
+    font-size: 26px;
+    line-height: 1.15;
+}
+
+.activities-dashboard .activity-donut span {
+    color: var(--activity-muted);
+    font-size: 11px;
+}
+
+.activities-dashboard .activity-summary-legend {
+    display: grid;
+    gap: 16px;
+}
+
+.activities-dashboard .activity-summary-legend > div,
+.activities-dashboard .activity-summary-legend > div > span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.activities-dashboard .activity-summary-legend > div > span {
+    justify-content: flex-start;
+    color: var(--activity-muted);
+    font-size: 11px;
+}
+
+.activities-dashboard .activity-summary-legend strong {
+    color: var(--activity-blue-dark);
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.activities-dashboard .activity-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.activities-dashboard .activity-dot-collected { background: var(--activity-blue); }
+.activities-dashboard .activity-dot-balance { background: #e5a848; }
+
+.activities-dashboard .activity-balance {
+    padding: 10px 12px;
+    border: 1px solid #bbdced;
+    border-radius: 7px;
+    background: #edf7fc;
+    color: #176e9c;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.activities-dashboard .activity-view-all {
+    color: var(--activity-blue);
+    font-size: 12px;
+    font-weight: 650;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.activities-dashboard.activity-form-page .activity-panel {
+    padding: 0 16px 16px;
+}
+
+.activities-dashboard.activity-form-page .activity-panel .panel-heading {
+    margin: 0 -16px 14px;
+}
+
+.activities-dashboard.activity-form-page .form-label {
+    margin-bottom: 5px;
+    color: #405772;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.activities-dashboard.activity-form-page .form-control,
+.activities-dashboard.activity-form-page .form-select {
+    min-height: 40px;
+    border-color: #d7e2ec;
+    border-radius: 7px;
+    font-size: 12px;
+}
+
+.activities-dashboard .activity-student-dropdown {
+    position: relative;
+}
+
+.activities-dashboard .activity-student-dropdown > .form-select {
+    text-align: left !important;
+}
+
+.activities-dashboard .activity-student-menu {
+    width: 100%;
+    min-width: 100%;
+    max-height: 370px;
+    padding: 0;
+    overflow: hidden;
+    border-color: var(--activity-line);
+    box-shadow: 0 8px 24px rgba(21, 48, 72, .15);
+}
+
+.activities-dashboard .activity-student-toolbar {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    padding: 10px;
+    border-bottom: 1px solid var(--activity-line);
+    background: #fff;
+}
+
+.activities-dashboard .activity-student-options {
+    max-height: 275px;
+    overflow-y: auto;
+    padding: 4px;
+}
+
+.activities-dashboard .activity-student-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 5px;
+    color: #344b62;
+    cursor: pointer;
+    white-space: normal;
+}
+
+.activities-dashboard .activity-student-option[hidden] {
+    display: none !important;
+}
+
+.activities-dashboard .activity-student-option .form-check-input {
+    flex: 0 0 auto;
+    margin: 0;
+}
+
+.activities-dashboard .activity-student-option span,
+.activities-dashboard .activity-student-option small {
+    display: block;
+}
+
+.activities-dashboard .activity-student-option small {
+    margin-top: 2px;
+    color: var(--activity-muted);
+    font-size: 11px;
+}
+
+.activities-dashboard .activity-student-option.is-selected {
+    background: #eff7fc;
+}
+
+.activities-dashboard .activity-student-option:hover {
+    background: #f3f8fb;
+}
+
+.activities-dashboard .activity-expected-preview {
+    display: grid;
+    align-content: center;
+    gap: 9px;
+    height: 100%;
+    min-height: 150px;
+    padding: 16px;
+    border: 1px solid #cfe2ef;
+    border-radius: 8px;
+    background: #f2f9fd;
+}
+
+.activities-dashboard .activity-expected-preview span {
+    color: var(--activity-muted);
+    font-size: 11px;
+}
+
+.activities-dashboard .activity-expected-preview strong {
+    color: var(--activity-blue-dark);
+    font-size: 17px;
+    font-variant-numeric: tabular-nums;
+}
+
+html[data-theme="dark"] .activities-dashboard {
+    color: #e6e2da;
+}
+
+html[data-theme="dark"] .activities-dashboard .activity-metric,
+html[data-theme="dark"] .activities-dashboard .activity-panel {
+    border-color: #302f2b;
+    background: #141412;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .18);
+}
+
+html[data-theme="dark"] .activities-dashboard .activity-metric strong,
+html[data-theme="dark"] .activities-dashboard .activity-table td strong,
+html[data-theme="dark"] .activities-dashboard .activity-panel .panel-heading h2,
+html[data-theme="dark"] .activities-dashboard .activity-summary-legend strong,
+html[data-theme="dark"] .activities-dashboard .activity-donut strong,
+html[data-theme="dark"] .activities-dashboard .activity-expected-preview strong {
+    color: #e9e5dc;
+}
+
+html[data-theme="dark"] .activities-dashboard .activity-panel .panel-heading,
+html[data-theme="dark"] .activities-dashboard .activity-table td,
+html[data-theme="dark"] .activities-dashboard .activity-table th,
+html[data-theme="dark"] .activities-dashboard .activity-payment-table td,
+html[data-theme="dark"] .activities-dashboard .activity-payment-table th {
+    border-color: #302f2b;
+}
+
+html[data-theme="dark"] .activities-dashboard .activity-table th,
+html[data-theme="dark"] .activities-dashboard .activity-payment-table th {
+    color: #d8d4ca;
+    background: #1b1a17;
+}
+
+html[data-theme="dark"] .activities-dashboard .activity-donut > div {
+    background: #141412;
+}
+
+html[data-theme="dark"] .activities-dashboard .activity-donut-empty {
+    background: #3a3d3f;
+}
+
+html[data-theme="dark"] .activities-dashboard .activity-expected-preview,
+html[data-theme="dark"] .activities-dashboard .activity-balance {
+    border-color: #33434b;
+    background: #172126;
+    color: #b9ddec;
+}
+
+html[data-theme="dark"] .activities-dashboard.activity-form-page .form-label {
+    color: #d6d2c9;
+}
+
+html[data-theme="dark"] .activities-dashboard .activity-student-menu,
+html[data-theme="dark"] .activities-dashboard .activity-student-toolbar {
+    border-color: #394047;
+    background: #1b1d1f;
+}
+
+html[data-theme="dark"] .activities-dashboard .activity-student-option {
+    color: #e1e5e9;
+}
+
+html[data-theme="dark"] .activities-dashboard .activity-student-option small {
+    color: #aab4be;
+}
+
+html[data-theme="dark"] .activities-dashboard .activity-student-option.is-selected,
+html[data-theme="dark"] .activities-dashboard .activity-student-option:hover {
+    background: #26333d;
+}
+
+@media (max-width: 767.98px) {
+    .activities-dashboard .page-title {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .activities-dashboard .page-title h1 {
+        font-size: 22px;
+    }
+
+    .activities-dashboard .activity-metric {
+        min-height: 88px;
+        padding: 13px;
+    }
+
+    .activities-dashboard .activity-metric strong {
+        font-size: 19px;
+    }
+
+    .activities-dashboard .activity-panel .panel-heading {
+        align-items: flex-start;
+        padding: 12px;
+    }
+
+    .activities-dashboard .activity-summary-body {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 18px;
+    }
+
+    .activities-dashboard .activity-summary-legend {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .activities-dashboard.activity-form-page .activity-panel {
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+
+    .activities-dashboard.activity-form-page .activity-panel .panel-heading {
+        margin-right: -12px;
+        margin-left: -12px;
+    }
+}
